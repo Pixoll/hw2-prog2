@@ -9,8 +9,6 @@ class Moneda1000 extends Moneda implements Comparable<Moneda> {
 
     @Override
     public int compareTo(Moneda moneda) {
-        if (moneda.getValor() > this.getValor()) return 1;
-        if (moneda.getValor() < this.getValor()) return -1;
-        return 0;
+        return Integer.compare(moneda.getValor(), this.getValor());
     }
 }
