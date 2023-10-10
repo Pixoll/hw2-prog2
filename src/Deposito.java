@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Deposito<T> {
-    public final ArrayList<T> almacen;
+    private final ArrayList<T> almacen;
 
     public Deposito() {
         this.almacen = new ArrayList<>();
