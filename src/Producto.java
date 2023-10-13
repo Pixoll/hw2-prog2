@@ -8,5 +8,4 @@ public abstract class Producto {
     public int getSerie() {
         return this.serie;
     }
-
 }
