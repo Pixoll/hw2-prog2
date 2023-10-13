@@ -1,4 +1,4 @@
-abstract class Bebida {
+public abstract class Bebida {
     private final int serie;
 
     public Bebida(int serie) {

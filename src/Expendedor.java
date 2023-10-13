@@ -1,4 +1,4 @@
-class Expendedor {
+public class Expendedor {
     public static final int COCA = 1;
     public static final int SPRITE = 2;
 
