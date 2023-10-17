@@ -1,49 +1,59 @@
 public class Expendedor {
-    public static final int COCA = 1;
-    public static final int SPRITE = 2;
-
-    private final Deposito<Bebida> coca;
-    private final Deposito<Bebida> sprite;
+    private final Deposito<Producto> cocaCola;
+    private final Deposito<Producto> sprite;
+    private final Deposito<Producto> fanta;
+    private final Deposito<Producto> snickers;
+    private final Deposito<Producto> super8;
     private final Deposito<Moneda> monedasVuelto;
-    private final int precioBebidas;
 
-    public Expendedor(int numeroBebidas, int precioBebidas) {
-        this.coca = new Deposito<>();
+    public Expendedor(int numeroProductos) {
+        this.cocaCola = new Deposito<>();
+        this.fanta = new Deposito<>();
         this.sprite = new Deposito<>();
+        this.snickers = new Deposito<>();
+        this.super8 = new Deposito<>();
         this.monedasVuelto = new Deposito<>();
-        this.precioBebidas = precioBebidas;
 
-        for (int i = 0; i < numeroBebidas; i++) {
-            this.coca.add(new CocaCola(i));
+        for (int i = 0; i < numeroProductos; i++) {
+            this.cocaCola.add(new CocaCola(i));
+            this.fanta.add(new Fanta(i));
             this.sprite.add(new Sprite(i));
+            this.snickers.add(new Snickers(i));
+            this.super8.add(new Super8(i));
         }
     }
 
-    public Bebida comprarBebida(Moneda moneda, int tipo) {
-        if (moneda == null) return null;
-        if (moneda.getValor() < this.precioBebidas) {
+    public Producto comprarProducto(Moneda moneda, TipoProductos tipo)
+            throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException {
+        if (moneda == null) {
+            throw new PagoIncorrectoException("No ingresaste dinero.");
+        }
+        if (moneda.getValor() < tipo.getPrecio()) {
             this.monedasVuelto.add(moneda);
-            return null;
+            throw new PagoInsuficienteException("Debes ingresar al menos $"
+                    + tipo.getPrecio()
+                    + " (ingresaste $" + moneda.getValor() + ")");
         }
 
-        Deposito<Bebida> depositoBebidas = tipo == Expendedor.COCA ? this.coca
-                : tipo == Expendedor.SPRITE ? this.sprite
-                : null;
-        if (depositoBebidas == null) return null;
+        Deposito<Producto> deposito = tipo == TipoProductos.COCA_COLA ? this.cocaCola
+                : tipo == TipoProductos.FANTA ? this.fanta
+                : tipo == TipoProductos.SPRITE ? this.sprite
+                : tipo == TipoProductos.SNICKERS ? this.snickers
+                : this.super8;
 
-        Bebida bebida = depositoBebidas.get();
-        if (bebida == null) {
+        Producto producto = deposito.get();
+        if (producto == null) {
             this.monedasVuelto.add(moneda);
-            return null;
+            throw new NoHayProductoException("No quedan más " + tipo.getTipo());
         }
 
-        int vuelto = moneda.getValor() - this.precioBebidas;
+        int vuelto = moneda.getValor() - tipo.getPrecio();
         while (vuelto != 0) {
             this.monedasVuelto.add(new Moneda100());
             vuelto -= 100;
         }
 
-        return bebida;
+        return producto;
     }
 
     public Moneda getVuelto() {

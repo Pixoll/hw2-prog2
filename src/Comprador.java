@@ -2,9 +2,16 @@ public class Comprador {
     private String sonido;
     private int vuelto;
 
-    public Comprador(Moneda m, int cualBebida, Expendedor exp) {
-        Bebida bebida = exp.comprarBebida(m, cualBebida);
-        if (bebida != null) this.sonido = bebida.beber();
+    public Comprador(Moneda m, TipoProductos tipoProducto, Expendedor exp)
+            throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException {
+        Producto producto = exp.comprarProducto(m, tipoProducto);
+
+        if (producto instanceof Bebida bebida) {
+            this.sonido = bebida.beber();
+        } else if (producto instanceof Dulce dulce) {
+            this.sonido = dulce.comer();
+        }
+
         while (true) {
             Moneda moneda = exp.getVuelto();
             if (moneda == null) break;
