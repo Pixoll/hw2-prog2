@@ -1,9 +1,9 @@
 public enum TipoProductos {
-    COCA_COLA("Coca Cola", 200),
-    FANTA("Fanta", 300),
-    SPRITE("Sprite", 400),
-    SNICKERS("Snickers", 500),
-    SUPER8("Super 8", 600);
+    COCA_COLA("Coca Cola", 1000),
+    FANTA("Fanta", 800),
+    SPRITE("Sprite", 900),
+    SNICKERS("Snickers", 1200),
+    SUPER8("Super 8", 400);
 
     private final String tipo;
     private final int precio;

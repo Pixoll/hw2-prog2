@@ -1,5 +1,5 @@
 public class Comprador {
-    private String sonido;
+    private String sabor;
     private int vuelto;
 
     public Comprador(Moneda m, TipoProductos tipoProducto, Expendedor exp)
@@ -7,9 +7,9 @@ public class Comprador {
         Producto producto = exp.comprarProducto(m, tipoProducto);
 
         if (producto instanceof Bebida bebida) {
-            this.sonido = bebida.beber();
+            this.sabor = bebida.beber();
         } else if (producto instanceof Dulce dulce) {
-            this.sonido = dulce.comer();
+            this.sabor = dulce.comer();
         }
 
         while (true) {
@@ -23,7 +23,7 @@ public class Comprador {
         return this.vuelto;
     }
 
-    public String queBebiste() {
-        return this.sonido;
+    public String queCompraste() {
+        return this.sabor;
     }
 }

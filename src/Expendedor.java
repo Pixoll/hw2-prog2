@@ -39,9 +39,10 @@ public class Expendedor {
                 : tipo == TipoProductos.FANTA ? this.fanta
                 : tipo == TipoProductos.SPRITE ? this.sprite
                 : tipo == TipoProductos.SNICKERS ? this.snickers
-                : this.super8;
+                : tipo == TipoProductos.SUPER8 ? this.super8
+                : null;
 
-        Producto producto = deposito.get();
+        Producto producto = deposito != null ? deposito.get() : null;
         if (producto == null) {
             this.monedasVuelto.add(moneda);
             throw new NoHayProductoException("No quedan más " + tipo.getTipo());
