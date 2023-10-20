@@ -106,7 +106,7 @@ public class Main {
     public static Moneda comprarProducto(final TipoProductos tipo, final Moneda moneda) {
         try {
             System.out.println("Comprando " + tipo.getTipo() + " ($" + tipo.getPrecio() + ")" + " con " + moneda);
-            final Comprador comprador = new Comprador(moneda, tipo, Main.expendedor);
+            final Comprador comprador = new Comprador(tipo, moneda, Main.expendedor);
 
             System.out.println("Compró: " + comprador.queCompraste());
             System.out.println("Vuelto: $" + comprador.cuantoVuelto());

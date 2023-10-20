@@ -24,7 +24,7 @@ public abstract class Moneda implements Comparable<Moneda> {
 
     @Override
     public int compareTo(Moneda moneda) {
-        return Integer.compare(moneda.getValor(), this.getValor());
+        return Integer.compare(this.getValor(), moneda.getValor());
     }
 
     public String toString() {

@@ -13,16 +13,16 @@ public class Comprador {
 
     /**
      * Quien compra un producto en el expendedor.
-     * @param moneda Con la que se compra el producto.
      * @param tipoProducto El tipo de producto que se compra.
+     * @param moneda Con la que se compra el producto.
      * @param expendedor Máquina expendedora que vende los productos.
      * @throws NoHayProductoException Excepción tirada cuando no hay productos en el depósito.
      * @throws PagoIncorrectoException Excepción tirada cuando el pago es incorrecto.
      * @throws PagoInsuficienteException Excepción tirada cuando el valor pagado es menor al del producto.
      */
-    public Comprador(Moneda moneda, TipoProductos tipoProducto, Expendedor expendedor)
+    public Comprador(TipoProductos tipoProducto, Moneda moneda, Expendedor expendedor)
             throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException {
-        Producto producto = expendedor.comprarProducto(moneda, tipoProducto);
+        Producto producto = expendedor.comprarProducto(tipoProducto, moneda);
 
         if (producto instanceof Bebida bebida) {
             this.sabor = bebida.beber();

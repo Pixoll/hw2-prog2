@@ -57,7 +57,7 @@ public class Expendedor {
      * @throws PagoIncorrectoException Tirada cuando el pago es incorrecto (null).
      * @throws PagoInsuficienteException Tirada cuando el valor pagado es menor al del producto.
      */
-    public Producto comprarProducto(Moneda moneda, TipoProductos tipo)
+    public Producto comprarProducto(TipoProductos tipo, Moneda moneda)
             throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException {
         if (moneda == null) {
             throw new PagoIncorrectoException("No ingresaste dinero.");
