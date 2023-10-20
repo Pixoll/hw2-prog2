@@ -22,7 +22,7 @@ public enum TipoProductos {
     /**
      * Representa el dulce Super 8.
      */
-    SUPER8("Super 8", 400);
+    SUPER8("Super 8", 100);
 
     /**
      * Texto que representa el tipo del producto.

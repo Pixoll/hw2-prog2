@@ -19,11 +19,11 @@ public class Expendedor {
      */
     private final Deposito<Producto> snickers;
     /**
-     * Depósito con todas los Super 8.
+     * Depósito con todos los Super 8.
      */
     private final Deposito<Producto> super8;
     /**
-     * Depósito con todas las monedas del vuelto.
+     * Depósito con todos las monedas del vuelto.
      */
     private final Deposito<Moneda> monedasVuelto;
 
@@ -74,9 +74,14 @@ public class Expendedor {
                 : tipo == TipoProductos.SPRITE ? this.sprite
                 : tipo == TipoProductos.SNICKERS ? this.snickers
                 : tipo == TipoProductos.SUPER8 ? this.super8
+                // Nunca pasa, es imposible entregar algo que no sea TipoProductos
                 : null;
+        if (deposito == null) {
+            this.monedasVuelto.add(moneda);
+            throw new NoHayProductoException("El tipo de producto \"" + tipo + "\" no existe");
+        }
 
-        Producto producto = deposito != null ? deposito.get() : null;
+        Producto producto = deposito.get();
         if (producto == null) {
             this.monedasVuelto.add(moneda);
             throw new NoHayProductoException("No quedan más " + tipo.getTipo());
