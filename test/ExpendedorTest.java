@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,6 +21,7 @@ class ExpendedorTest {
     }
 
     @Test
+    @DisplayName("Comprar todo y revisar el tipo del producto")
     void comprarProductoExitoso() {
         try {
             Producto cocaCola = this.comprar(TipoProductos.COCA_COLA, m1000);
@@ -38,6 +40,7 @@ class ExpendedorTest {
     }
 
     @Test
+    @DisplayName("Comprar todo sin dinero")
     void comprarProductoSinMoneda() {
         try {
             this.comprar(TipoProductos.COCA_COLA, null);
@@ -55,6 +58,7 @@ class ExpendedorTest {
     }
 
     @Test
+    @DisplayName("Comprar todo sin dinero suficiente")
     void comprarConInsuficiente() {
         try {
             this.comprar(TipoProductos.COCA_COLA, this.m100);
@@ -71,6 +75,7 @@ class ExpendedorTest {
     }
 
     @Test
+    @DisplayName("Comprar todo cuando no hay stock")
     void comprarSinStock() {
         expendedor = new Expendedor(0);
 
@@ -90,6 +95,7 @@ class ExpendedorTest {
     }
 
     @Test
+    @DisplayName("Comprar todo y revisar vuelto")
     void getVuelto() {
         try {
             this.comprar(TipoProductos.COCA_COLA, m1000);

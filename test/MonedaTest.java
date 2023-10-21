@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,6 +19,7 @@ class MonedaTest {
     }
 
     @Test
+    @DisplayName("Revisar que .getSerie() no es nulo")
     void getSerieNotNull() {
         assertNotNull(this.m100.getSerie());
         assertNotNull(this.m500.getSerie());
@@ -26,6 +28,7 @@ class MonedaTest {
     }
 
     @Test
+    @DisplayName("Revisar que .getSerie() es igual a la moneda")
     void getSerieEqualsSelf() {
         assertEquals(this.m100, this.m100.getSerie());
         assertEquals(this.m500, this.m500.getSerie());
@@ -34,6 +37,7 @@ class MonedaTest {
     }
 
     @Test
+    @DisplayName("Revisar que .getSerie() no es igual a una diferente")
     void getSerieNotEqualsOther() {
         assertNotEquals(this.m100.getSerie(), this.m500.getSerie());
         assertNotEquals(this.m100.getSerie(), this.m1000.getSerie());
@@ -44,6 +48,7 @@ class MonedaTest {
     }
 
     @Test
+    @DisplayName("Revisar el valor de la moneda")
     void getValor() {
         assertEquals(100, this.m100.getValor());
         assertEquals(500, this.m500.getValor());
@@ -52,6 +57,7 @@ class MonedaTest {
     }
 
     @Test
+    @DisplayName("Comparar Moneda100 con el resto")
     void m100CompareTo() {
         assertEquals(0, this.m100.compareTo(this.m100));
         assertTrue(this.m100.compareTo(this.m500) < 0);
@@ -60,6 +66,7 @@ class MonedaTest {
     }
 
     @Test
+    @DisplayName("Comparar Moneda500 con el resto")
     void m500CompareTo() {
         assertTrue(this.m500.compareTo(this.m100) > 0);
         assertEquals(0, this.m500.compareTo(this.m500));
@@ -68,6 +75,7 @@ class MonedaTest {
     }
 
     @Test
+    @DisplayName("Comparar Moneda1000 con el resto")
     void m1000CompareTo() {
         assertTrue(this.m1000.compareTo(this.m100) > 0);
         assertTrue(this.m1000.compareTo(this.m500) > 0);
@@ -76,6 +84,7 @@ class MonedaTest {
     }
 
     @Test
+    @DisplayName("Comparar Moneda1500 con el resto")
     void m1500CompareTo() {
         assertTrue(this.m1500.compareTo(this.m100) > 0);
         assertTrue(this.m1500.compareTo(this.m500) > 0);

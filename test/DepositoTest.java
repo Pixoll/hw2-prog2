@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -5,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 class DepositoTest {
     @Test
+    @DisplayName("Añadir y remover productos de un deposito")
     void addGetProducto() {
         Deposito<Producto> deposito = new Deposito<>();
 
@@ -33,6 +35,7 @@ class DepositoTest {
     }
 
     @Test
+    @DisplayName("Añadir y remover monedas de un deposito")
     void addGetMoneda() {
         Deposito<Moneda> deposito = new Deposito<>();
 
