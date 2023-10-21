@@ -8,11 +8,11 @@ class DepositoTest {
     void addGetProducto() {
         Deposito<Producto> deposito = new Deposito<>();
 
-        Producto bCocaCola = new CocaCola(1);
-        Producto bSprite = new Sprite(2);
-        Producto bFanta = new Fanta(3);
-        Producto dSnickers = new Snickers(4);
-        Producto dSuper8 = new Super8(5);
+        CocaCola bCocaCola = new CocaCola(1);
+        Sprite bSprite = new Sprite(2);
+        Fanta bFanta = new Fanta(3);
+        Snickers dSnickers = new Snickers(4);
+        Super8 dSuper8 = new Super8(5);
 
         deposito.add(bCocaCola);
         deposito.add(bSprite);
@@ -36,10 +36,11 @@ class DepositoTest {
     void addGetMoneda() {
         Deposito<Moneda> deposito = new Deposito<>();
 
-        Moneda m100 = new Moneda100();
-        Moneda m500 = new Moneda500();
-        Moneda m1000 = new Moneda1000();
-        Moneda m1500 = new Moneda1500();
+        Moneda100 m100 = new Moneda100();
+        Moneda500 m500 = new Moneda500();
+        Moneda1000 m1000 = new Moneda1000();
+        Moneda1500 m1500 = new Moneda1500();
+
         deposito.add(m100);
         deposito.add(m500);
         deposito.add(m1000);

@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MonedaTest {
-    private Moneda m100;
-    private Moneda m500;
-    private Moneda m1000;
-    private Moneda m1500;
+    private Moneda100 m100;
+    private Moneda500 m500;
+    private Moneda1000 m1000;
+    private Moneda1500 m1500;
 
     @BeforeEach
     void setUp() {
