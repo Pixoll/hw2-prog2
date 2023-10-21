@@ -58,4 +58,9 @@ public enum TipoProductos {
     public int getPrecio() {
         return this.precio;
     }
+
+    public static TipoProductos valueOf(int cardinal) {
+        if (cardinal < 0 || cardinal > TipoProductos.values().length - 1) return null;
+        return TipoProductos.values()[cardinal];
+    }
 }
